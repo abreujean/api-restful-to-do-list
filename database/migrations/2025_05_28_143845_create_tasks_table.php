@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('hash', 100);
             $table->string('title', 255);
-            $table->text('description', 255);
+            $table->text('description');
 
             /**
              * STATUSES (FK)
