@@ -13,10 +13,11 @@ class StatusSeeder extends Seeder
      */
     public function run(): void
     {
-        $statuses = ['Pendente', 'Em Andamento', 'Concluída'];
+       Status::factory()->createMany([
+            ['status' => 'Pendente'],
+            ['status' => 'Em Andamento'],
+            ['status' => 'Concluída'],
+        ]);
 
-        foreach ($statuses as $status) {
-            Status::firstOrCreate(['status' => $status]);
-        }
     }
 }

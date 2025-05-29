@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
-
+use App\Models\Task;
 class TaskController extends Controller
 {
 
+    public function __construct()
+    {
+
+    }
 
     /*
     * function to crete a new task
@@ -26,7 +30,7 @@ class TaskController extends Controller
             ]);
 
             // Create a new task
-            $task = new \App\Models\Task();
+            $task = new Task();
             $task->hash = Uuid::uuid4(); // Generate a unique hash for the task
             $task->title = $request->input('title');
             $task->description = $request->input('description');
@@ -37,6 +41,23 @@ class TaskController extends Controller
             
         } catch (\Exception $e) {
             return response()->json(['message' => 'Erro ao criar tarefa: ' . $e->getMessage()], 422);
+        }
+    }
+
+    /**
+     * function to get all tasks
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getTasks()
+    {
+        try {
+            $tasks = Task::with('status')->get();
+            return response()->json(['tasks' => $tasks], 201);
+
+        } catch (\Exception $e) {
+
+            return response()->json(['message' => 'Erro ao buscar tarefas: ' . $e->getMessage()], 422);
+    
         }
     }
 }
