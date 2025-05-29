@@ -14,7 +14,7 @@ class TaskApiTest extends TestCase
      use RefreshDatabase;
 
 
-    public function test_crete_tasks()
+    public function test_create_tasks()
     {
         $status = Status::factory()->create(['status' => 'Pendente']);
 
