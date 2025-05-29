@@ -18,7 +18,7 @@ class TaskController extends Controller
      *         required=true,
      *         description="Dados da tarefa",
      *         @OA\JsonContent(
-     *             required={"title", "description", "status_id"},
+     *             required={"title", "status_id"},
      *             @OA\Property(property="title", type="string", example="Criar Modal"),
      *             @OA\Property(property="description", type="string", example="Modal para exibir detalhes da tarefa"),
      *             @OA\Property(property="status_id", type="integer", example=2)

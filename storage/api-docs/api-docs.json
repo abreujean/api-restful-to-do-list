@@ -79,7 +79,6 @@
                             "schema": {
                                 "required": [
                                     "title",
-                                    "description",
                                     "status_id"
                                 ],
                                 "properties": {
